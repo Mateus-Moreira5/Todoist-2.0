@@ -13,7 +13,7 @@ public class TarefaRepository : ITarefaRepository
     {
         _context = context;
     }
-    public async Task<Tarefa?> BuscarId(int id)
+    public async Task<Tarefa?> BuscarId(Guid id)
     {
         return await _context.tarefa.FindAsync(id);
     }
@@ -25,9 +25,9 @@ public class TarefaRepository : ITarefaRepository
         return novaTarefa;
     }
 
-    public async Task DeletarTarefa(int id)
+    public async Task DeletarTarefa(Guid id)
     {
-        var tarefa = await _context.tarefa.FindAsync();
+        var tarefa = await _context.tarefa.FindAsync(id);
         if (tarefa != null)
         {
             _context.tarefa.Remove(tarefa);
@@ -35,7 +35,7 @@ public class TarefaRepository : ITarefaRepository
         }
     }
 
-    public async Task<Tarefa> atualizarTarefa(Tarefa tarefaAtualizada)
+    public async Task<Tarefa> AtualizarTarefa(Tarefa tarefaAtualizada)
     {
         _context.tarefa.Update(tarefaAtualizada);
         await _context.SaveChangesAsync();
