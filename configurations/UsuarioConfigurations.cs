@@ -24,7 +24,7 @@ public class UsuarioConfigurations : IEntityTypeConfiguration<Usuario>
             .IsRequired();
 
         builder.HasMany(u => u.Tarefas)
-            .WithOne()
+            .WithOne(t => t.Usuario)
             .HasForeignKey(u => u.IdUsuario)
             .OnDelete(DeleteBehavior.Cascade);
     }

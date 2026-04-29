@@ -7,8 +7,8 @@ public class Tarefa
     public string? Descricao { get; private set; }
     public Prioridade Prioridade { get; private set; }
     public bool Concluida { get; private set; }
-    
     public Guid IdUsuario { get; private set; }
+    
     public Usuario Usuario { get; private set; }
     
     private Tarefa() {}
